@@ -16,7 +16,7 @@ import styles from "../Styles/Form.module.scss";
 export const UpdateUser = () => {
   const { id } = useParams();
   const [currentId, setCurrentId] = React.useState(id);
-  const { user, isLoading } = useSelector((state) => state.users);
+  const { isLoading, user } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,11 +37,8 @@ export const UpdateUser = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (currentId) {
-      dispatch(updatedUser(currentId, postData, navigate));
 
-      clear();
-    }
+    dispatch(updatedUser(currentId, postData, navigate));
   };
   const clear = () => {
     setCurrentId(null);
